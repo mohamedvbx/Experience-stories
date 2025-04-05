@@ -1,0 +1,200 @@
+[
+  {
+    "name": "default",
+    "label": "افتراضي",
+    "icon": "star",
+    "colors": {
+      "primary": "#4a6fa5",
+      "secondary": "#166088",
+      "text": "#333",
+      "bg": "#f8f9fa",
+      "card": "#fff",
+      "navbar": "#fff",
+      "search": "#f1f3f5",
+      "footer": "#4a6fa5",
+      "footerText": "#fff",
+      "favorite": "#ff4757",
+      "separator": "#e0e0e0"
+    }
+  },
+  {
+    "name": "dark",
+    "label": "داكن",
+    "icon": "moon",
+    "colors": {
+      "primary": "#6a8cc7",
+      "secondary": "#3a7ca5",
+      "text": "#f8f9fa",
+      "bg": "#1a1a2e",
+      "card": "#16213e",
+      "navbar": "#16213e",
+      "search": "#0f3460",
+      "footer": "#0f3460",
+      "footerText": "#f8f9fa",
+      "favorite": "#ff6b81",
+      "separator": "#2a3a5a"
+    }
+  },
+  {
+    "name": "nature",
+    "label": "طبيعة",
+    "icon": "leaf",
+    "colors": {
+      "primary": "#2e8b57",
+      "secondary": "#3cb371",
+      "text": "#2f4f4f",
+      "bg": "#f0fff0",
+      "card": "#e0ffe0",
+      "navbar": "#98fb98",
+      "search": "#c1ffc1",
+      "footer": "#2e8b57",
+      "footerText": "#fff",
+      "favorite": "#ff6348",
+      "separator": "#a8d8a8"
+    }
+  },
+  {
+    "name": "royal",
+    "label": "ملكي",
+    "icon": "crown",
+    "colors": {
+      "primary": "#9370db",
+      "secondary": "#8a2be2",
+      "text": "#4b0082",
+      "bg": "#f8f8ff",
+      "card": "#e6e6fa",
+      "navbar": "#d8bfd8",
+      "search": "#e6e6fa",
+      "footer": "#9370db",
+      "footerText": "#fff",
+      "favorite": "#ff1493",
+      "separator": "#d0c0e0"
+    }
+  },
+  {
+    "name": "warm",
+    "label": "دافئ",
+    "icon": "sun",
+    "colors": {
+      "primary": "#ff7f50",
+      "secondary": "#ff6347",
+      "text": "#8b0000",
+      "bg": "#fff5ee",
+      "card": "#ffebcd",
+      "navbar": "#ffdead",
+      "search": "#ffe4c4",
+      "footer": "#ff7f50",
+      "footerText": "#fff",
+      "favorite": "#ff0000",
+      "separator": "#ffd0b0"
+    }
+  },
+  {
+    "name": "cool",
+    "label": "بارد",
+    "icon": "snowflake",
+    "colors": {
+      "primary": "#4682b4",
+      "secondary": "#5f9ea0",
+      "text": "#2f4f4f",
+      "bg": "#f0f8ff",
+      "card": "#e0ffff",
+      "navbar": "#afeeee",
+      "search": "#b0e0e6",
+      "footer": "#4682b4",
+      "footerText": "#fff",
+      "favorite": "#1e90ff",
+      "separator": "#a0d0e0"
+    }
+  },
+  {
+    "name": "sunset",
+    "label": "غروب",
+    "icon": "sun",
+    "colors": {
+      "primary": "#ff7e5f",
+      "secondary": "#feb47b",
+      "text": "#5a3d2b",
+      "bg": "#fff9f2",
+      "card": "#ffe8d6",
+      "navbar": "#ffd1b3",
+      "search": "#ffc4a3",
+      "footer": "#ff7e5f",
+      "footerText": "#fff",
+      "favorite": "#e25822",
+      "separator": "#ffb38a"
+    }
+  },
+  {
+    "name": "ocean",
+    "label": "محيط",
+    "icon": "water",
+    "colors": {
+      "primary": "#1e88e5",
+      "secondary": "#0d47a1",
+      "text": "#0d2b4e",
+      "bg": "#e3f2fd",
+      "card": "#bbdefb",
+      "navbar": "#90caf9",
+      "search": "#64b5f6",
+      "footer": "#1e88e5",
+      "footerText": "#fff",
+      "favorite": "#01579b",
+      "separator": "#42a5f5"
+    }
+  },
+  {
+    "name": "fairy",
+    "label": "خرافية",
+    "icon": "fairy",
+    "colors": {
+      "primary": "#9b59b6",
+      "secondary": "#8e44ad",
+      "text": "#4a235a",
+      "bg": "#f5eef8",
+      "card": "#ebdef0",
+      "navbar": "#d2b4de",
+      "search": "#bb8fce",
+      "footer": "#9b59b6",
+      "footerText": "#fff",
+      "favorite": "#6c3483",
+      "separator": "#af7ac5"
+    }
+  },
+  {
+    "name": "space",
+    "label": "فضائي",
+    "icon": "rocket",
+    "colors": {
+      "primary": "#3498db",
+      "secondary": "#2980b9",
+      "text": "#1a5276",
+      "bg": "#eaf2f8",
+      "card": "#d4e6f1",
+      "navbar": "#aed6f1",
+      "search": "#85c1e9",
+      "footer": "#3498db",
+      "footerText": "#fff",
+      "favorite": "#2874a6",
+      "separator": "#5dade2"
+    }
+  },
+  {
+    "name": "forest",
+    "label": "غابة",
+    "icon": "tree",
+    "colors": {
+      "primary": "#27ae60",
+      "secondary": "#219653",
+      "text": "#145a32",
+      "bg": "#e8f8f0",
+      "card": "#d1f2e5",
+      "navbar": "#a3e4d7",
+      "search": "#76d7c4",
+      "footer": "#27ae60",
+      "footerText": "#fff",
+      "favorite": "#1e8449",
+      "separator": "#52be80"
+    }
+  }
+]
