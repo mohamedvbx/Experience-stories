@@ -406,31 +406,32 @@
                 const response = await fetch('stories-data.json');
                 
                 if (!response.ok) {
-                    throw new Error('فشل في جلب ملف البيانات. تأكد من وجود الملف وتسميته بشكل صحيح');
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 
-                storiesData = await response.json();
+                const data = await response.json();
                 
                 // التحقق من صحة البيانات
-                if (!Array.isArray(storiesData)) {
-                    throw new Error('تنسيق JSON غير صالح. يجب أن يحتوي الملف على مصفوفة من القصص');
+                if (!Array.isArray(data)) {
+                    throw new Error('تنسيق ملف القصص غير صالح - يجب أن يكون مصفوفة');
                 }
                 
                 // التحقق من وجود الخصائص الأساسية في كل قصة
-                storiesData.forEach((story, index) => {
+                data.forEach((story, index) => {
                     if (!story.title || !story.genre || !story.filename) {
-                        throw new Error(`القصة في الفهرس ${index} يفتقد خصائص أساسية (title, genre, filename)`);
+                        throw new Error(`القصة في الفهرس ${index} تفتقد خصائص أساسية (title, genre, filename)`);
                     }
                 });
                 
-                // إنشاء قائمة الأنواع
+                storiesData = data;
                 setupGenreFilter();
-                
                 currentStories = [...storiesData];
                 renderStories(currentStories);
                 
+                return true;
+                
             } catch (error) {
-                console.error('حدث خطأ في جلب البيانات:', error);
+                console.error('حدث خطأ في جلب القصص:', error);
                 showToast("حدث خطأ في تحميل القصص. جاري استخدام بيانات افتراضية", true);
                 
                 // استخدام بيانات افتراضية إذا فشل جلب ملف JSON
@@ -446,6 +447,8 @@
                 setupGenreFilter();
                 currentStories = [...storiesData];
                 renderStories(currentStories);
+                
+                return false;
             }
         }
 
@@ -455,18 +458,26 @@
                 const response = await fetch('themes.json');
                 
                 if (!response.ok) {
-                    throw new Error('فشل في جلب ملف الثيمات');
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 
-                themesData = await response.json();
+                const data = await response.json();
                 
                 // التحقق من صحة البيانات
-                if (!Array.isArray(themesData)) {
-                    throw new Error('تنسيق JSON غير صالح. يجب أن يحتوي الملف على مصفوفة من الثيمات');
+                if (!Array.isArray(data)) {
+                    throw new Error('تنسيق ملف الثيمات غير صالح - يجب أن يكون مصفوفة');
                 }
                 
-                // ملء قائمة الثيمات
+                // التحقق من وجود خصائص أساسية في كل ثيم
+                data.forEach((theme, index) => {
+                    if (!theme.name || !theme.label || !theme.colors) {
+                        throw new Error(`الثيم في الفهرس ${index} يفتقد خصائص أساسية`);
+                    }
+                });
+                
+                themesData = data;
                 populateThemeDropdown();
+                return true;
                 
             } catch (error) {
                 console.error('حدث خطأ في جلب الثيمات:', error);
@@ -513,6 +524,7 @@
                 ];
                 
                 populateThemeDropdown();
+                return false;
             }
         }
 
@@ -536,7 +548,10 @@
         // تطبيق الثيم المحدد
         function applyTheme(themeName) {
             const theme = themesData.find(t => t.name === themeName);
-            if (!theme) return;
+            if (!theme) {
+                console.error('الثيم المطلوب غير موجود:', themeName);
+                return;
+            }
             
             // تطبيق جميع ألوان الثيم
             for (const [key, value] of Object.entries(theme.colors)) {
@@ -752,13 +767,31 @@
         }
 
         // تهيئة الصفحة
-        document.addEventListener('DOMContentLoaded', function() {
-            fetchStoriesData();
-            fetchThemesData().then(() => {
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                // تحميل القصص والثيمات بالتوازي
+                const [storiesLoaded, themesLoaded] = await Promise.all([
+                    fetchStoriesData(),
+                    fetchThemesData()
+                ]);
+                
+                if (!storiesLoaded) {
+                    console.warn('تم استخدام القصص الافتراضية بسبب مشكلة في التحميل');
+                }
+                
+                if (!themesLoaded) {
+                    console.warn('تم استخدام الثيمات الافتراضية بسبب مشكلة في التحميل');
+                }
+                
+                // تحميل الثيم المحفوظ
                 loadSavedTheme();
-            });
+                
+            } catch (error) {
+                console.error('خطأ في تهيئة التطبيق:', error);
+                showToast("حدث خطأ في تحميل البيانات الأساسية", true);
+            }
             
-            // إضافة أحداث للعناصر
+            // إعداد بقية الأحداث
             document.getElementById('searchInput').addEventListener('input', applyFilters);
             document.getElementById('searchIcon').addEventListener('click', applyFilters);
             
@@ -784,4 +817,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
